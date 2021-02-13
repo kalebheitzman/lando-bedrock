@@ -57,7 +57,8 @@
     "wpackagist-plugin/redis-cache": "^2.0",
     "wpackagist-plugin/wp-super-cache": "^1.7",
     "wpackagist-plugin/fast-velocity-minify": "^3.1",
-    "wpackagist-plugin/pre-party-browser-hints": "1.7.4.3"
+    "wpackagist-plugin/pre-party-browser-hints": "1.7.4.3",
+    "wpackagist-plugin/wp-chosen": "^5.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.5.8",
@@ -76,7 +77,10 @@
         "roots/wp-stage-switcher",
         "roots/multisite-url-fixer",
         "wpackagist-plugin/redis-cache",
-        "wpackagist-plugin/stream"
+        "wpackagist-plugin/stream",
+        "wpackagist-plugin/wp-chosen",
+        "wpackagist-plugin/wp-user-avatars",
+        "wpackagist-plugin/wp-user-profiles"
       ],
       "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
       "web/app/themes/{$name}/": ["type:wordpress-theme"]
