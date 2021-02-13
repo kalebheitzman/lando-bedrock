@@ -55,7 +55,6 @@
     "stoutlogic/acf-builder": "^1.11",
     "samrap/acf-fluent": "^0.4.0",
     "johnbillion/extended-cpts": "^4.5",
-    "wpackagist-plugin/wp-fail2ban": "4.3.0.9",
     "wpackagist-plugin/redis-cache": "^2.0"
   },
   "require-dev": {

@@ -7,3 +7,4 @@ development:
 global:
   enable:
     - wp-user-profiles/wp-user-profiles.php
+    - wp-user-avatars/wp-user-avatars.php
