@@ -7,3 +7,8 @@
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 require_once dirname(__DIR__) . '/config/application.php';
 require_once ABSPATH . 'wp-settings.php';
+
+/**
+ * Plugin Manifest
+ */
+\PrimeTime\WordPress\PluginManifest\Activation::set(dirname(__DIR__) . '/config/plugin-manifest.yml', getenv('WP_ENV'));

@@ -44,16 +44,6 @@ if (file_exists($root_dir . '/.env')) {
 define('WP_ENV', env('WP_ENV') ?: 'production');
 
 /**
- * Stage Switcher
- */
-$envs = [
-    'development' => env('ENV_DEV_URL'),
-    'staging'     => env('ENV_STAGE_URL'),
-    'production'  => env('ENV_PROD_URL')
-];
-define('ENVIRONMENTS', serialize($envs));
-
-/**
  * URLs
  */
 Config::define('WP_HOME', env('WP_HOME'));
@@ -132,7 +122,38 @@ if (file_exists($env_config)) {
     require_once $env_config;
 }
 
+/**
+ * Stage Switcher
+ */
+$envs = [
+    'development' => env('ENV_DEV_URL'),
+    'staging'     => env('ENV_STAGE_URL'),
+    'production'  => env('ENV_PROD_URL')
+];
+Config::define('ENVIRONMENTS', serialize($envs));
+
+/**
+ * Redis Object Cache
+ */
+Config::define('WP_REDIS_HOST', env('WP_REDIS_HOST') ?: '127.0.0.1');
+Config::define('WP_REDIS_PORT', env('WP_REDIS_PORT') ?: 6379);
+Config::define('WP_REDIS_TIMEOUT', env('WP_REDIS_TIMEOUT') ?: 1);
+Config::define('WP_REDIS_READ_TIMEOUT', env('WP_REDIS_READ_TIMEOUT') ?: 1);
+
+// change the database for each site to avoid cache collisions
+Config::define('WP_REDIS_DATABASE', env('WP_REDIS_DATABASE') ?: 0);
+
+// supported clients: `phpredis`, `credis`, `predis` and `hhvm`
+Config::define('WP_REDIS_CLIENT', env('WP_REDIS_CLIENT') ?: 'phpredis');
+
+// automatically delete cache keys after 7 days
+Config::define('WP_REDIS_MAXTTL', 60 * 60 * 24 * 7);
+
+// bypass the object cache, useful for debugging
+Config::define('WP_REDIS_DISABLED', env('WP_REDIS_DISABLED'));
+
 Config::apply();
+
 
 /**
  * Bootstrap WordPress

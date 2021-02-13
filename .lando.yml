@@ -1,10 +1,27 @@
+# project information
 name: bedrock
 recipe: wordpress
 
-proxy:
-  theme:
-    - localhost:3000
+# performance tweaks
+excludes:
+  - vendor
+  - node_modules
 
+# events
+events:
+  pre-stop:
+    - appserver: echo "Backing up database..."
+    - appserver: wp db export --path=/app/web
+    - appserver: echo "Database successfully backed up"
+
+# proxy urls
+proxy:
+  mailhog:
+    - mail.bedrock.lndo.site
+  theme:
+    - localhost:3000 # sage development
+
+# configuration
 config:
   php: '7.4'
   via: nginx
@@ -12,13 +29,42 @@ config:
   database: mariadb:10.4
   xdebug: true
 
+# services
 services:
+
+  # theming for sage
   theme:
     type: node
     services:
       ports:
         - 3000:3000
 
+  # mailhog for intercepting mail in dev
+  mailhog:
+    type: mailhog:v1.0.0
+    portforward: true
+    hogfrom:
+      - appserver
+
+  # redis for object caching
+  redis:
+    type: redis:6
+    persist: true
+    portforward: false
+    config: 
+      server: config/redis.conf
+
+# tooling
 tooling:
+  npm:
+    service: theme
+  node:
+    service: theme
+  gulp:
+    service: theme
   yarn:
     service: theme
+  redis-cli:
+    service: redis
+  php:
+    service: appserver

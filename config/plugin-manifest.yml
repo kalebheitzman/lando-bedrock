@@ -1,0 +1,9 @@
+# development environment
+development:
+  enable:
+    - query-monitor/query-monitor.php
+
+# all environments
+global:
+  enable:
+    - wp-user-profiles/wp-user-profiles.php
