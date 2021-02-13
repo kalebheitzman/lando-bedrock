@@ -44,6 +44,16 @@ if (file_exists($root_dir . '/.env')) {
 define('WP_ENV', env('WP_ENV') ?: 'production');
 
 /**
+ * Stage Switcher
+ */
+$envs = [
+    'development' => env('ENV_DEV_URL'),
+    'staging'     => env('ENV_STAGE_URL'),
+    'production'  => env('ENV_PROD_URL')
+];
+define('ENVIRONMENTS', serialize($envs));
+
+/**
  * URLs
  */
 Config::define('WP_HOME', env('WP_HOME'));
