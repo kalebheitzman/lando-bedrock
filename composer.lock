@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9416fbddca15e5a69f7e1d44c2305fe2",
+    "content-hash": "7e6c221a6ccdb83d435448a2b09fa8b9",
     "packages": [
         {
             "name": "composer/installers",
@@ -1570,6 +1570,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/fast-velocity-minify/"
+        },
+        {
+            "name": "wpackagist-plugin/pre-party-browser-hints",
+            "version": "1.7.4.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/pre-party-browser-hints/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/pre-party-browser-hints.zip?timestamp=1609901367"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/pre-party-browser-hints/"
         },
         {
             "name": "wpackagist-plugin/query-monitor",
