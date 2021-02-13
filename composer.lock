@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a26eea6bd3053b9e3ed7f5069b0a6fd4",
+    "content-hash": "9416fbddca15e5a69f7e1d44c2305fe2",
     "packages": [
         {
             "name": "composer/installers",
@@ -1554,6 +1554,24 @@
             "homepage": "https://wordpress.org/plugins/easy-wp-smtp/"
         },
         {
+            "name": "wpackagist-plugin/fast-velocity-minify",
+            "version": "3.1.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/fast-velocity-minify/",
+                "reference": "tags/3.1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/fast-velocity-minify.3.1.4.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/fast-velocity-minify/"
+        },
+        {
             "name": "wpackagist-plugin/query-monitor",
             "version": "3.6.7",
             "source": {
@@ -1626,22 +1644,22 @@
             "homepage": "https://wordpress.org/plugins/stream/"
         },
         {
-            "name": "wpackagist-plugin/wp-fail2ban",
-            "version": "4.3.0.9",
+            "name": "wpackagist-plugin/wp-super-cache",
+            "version": "1.7.1",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-fail2ban/",
-                "reference": "tags/4.3.0.9"
+                "url": "https://plugins.svn.wordpress.org/wp-super-cache/",
+                "reference": "tags/1.7.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-fail2ban.4.3.0.9.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-super-cache.1.7.1.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-fail2ban/"
+            "homepage": "https://wordpress.org/plugins/wp-super-cache/"
         },
         {
             "name": "wpackagist-plugin/wp-term-order",

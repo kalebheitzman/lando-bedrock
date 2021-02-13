@@ -3,8 +3,21 @@ development:
   enable:
     - query-monitor/query-monitor.php
 
+# staging
+staging:
+  enable:
+    - wp-super-cache/wp-cache.php
+    - fast-velocity-minify/fvm.php
+
+# production
+production:
+  enable:
+    - wp-super-cache/wp-cache.php
+    - fast-velocity-minify/fvm.php
+
 # all environments
 global:
   enable:
     - wp-user-profiles/wp-user-profiles.php
     - wp-user-avatars/wp-user-avatars.php
+
