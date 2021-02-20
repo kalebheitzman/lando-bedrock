@@ -1,0 +1,3 @@
+[submodule "web/app/themes/components"]
+	path = web/app/themes/components
+	url = git@github.com:kalebheitzman/components.git
