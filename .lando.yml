@@ -18,8 +18,6 @@ events:
 proxy:
   mailhog:
     - mail.bedrock.lndo.site
-  theme:
-    - localhost:3000 # sage development
 
 # configuration
 config:
@@ -32,12 +30,9 @@ config:
 # services
 services:
 
-  # theming for sage
+  # theming for wordpress
   theme:
     type: node
-    services:
-      ports:
-        - 3000:3000
 
   # mailhog for intercepting mail in dev
   mailhog:
@@ -58,6 +53,8 @@ services:
 tooling:
   npm:
     service: theme
+  npx:
+    service: theme
   node:
     service: theme
   gulp:
@@ -68,3 +65,28 @@ tooling:
     service: redis
   php:
     service: appserver
+  sync:local:
+    service: appserver
+    description: Sync production server to local
+    cmd: 
+      - echo '\n--syncing file uploads...'
+      - rsync -av edutcmi:/var/www/tcmi.edu/wordpress/wp-content/uploads /app/wordpress/wp-content
+      - echo '\n--export production database'
+      - ssh edutcmi 'cd /var/www/tcmi.edu/wordpress && wp db export production.sql'
+      - echo '\n--importing production database...'
+      - rsync -av edutcmi:/var/www/tcmi.edu/wordpress/production.sql /app/wordpress/
+      - cd /app/wordpress && wp db import production.sql
+      - cd /app/wordpress && wp cache flush
+      - echo '\n--deactivating production plugins...'
+      - cd /app/wordpress && wp plugin deactivate wp-super-cache fast-velocity-minify all-in-one-wp-security-and-firewall
+      - echo '\n--activating development plugins...'
+      - cd /app/wordpress && wp plugin activate query-monitor
+      - echo '\n--updating production url to lando url...'
+      - cd /app/wordpress && wp search-replace 'www3.tcmi.edu' 'tcmi.lndo.site'
+      - cd /app/wordpress && wp cache flush
+  deploy:production:
+    service: appserver
+    description: Deploy code to production
+    cmd:
+      - echo '\n--deploying code to production'
+      - ssh edutcmi 'cd /var/www/tcmi.edu && git pull'
